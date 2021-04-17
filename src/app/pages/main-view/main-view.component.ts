@@ -20,8 +20,9 @@ export class MainViewComponent implements OnInit {
 
   searchWithName(name?: string) {
     this.isSearching = true;
-    this.users.searchAboutUsers(name).subscribe((res: Column) => {
+    this.users.searchAboutUsers(this.name).subscribe((res: Column) => {
       this.usersData = this.users.splitArray(res?.results);
+      console.log('usersData', this.usersData);
       this.isSearching = false;
     }, error => {
       this.isSearching = false;

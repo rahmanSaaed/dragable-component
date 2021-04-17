@@ -36,10 +36,6 @@ describe('MainViewComponent', () => {
   it('shuld render users  :) ', () => {
     component.searchWithName();
     fixture.detectChanges();
-    
-    const card = el.query(By.css(".task"))
-    expect(card).toBeTruthy("could not find card")
-
   });
 
 
