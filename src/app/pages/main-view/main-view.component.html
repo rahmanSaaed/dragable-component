@@ -1,0 +1,38 @@
+<div class="root">
+  <div class="navbar has-background-dark">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <h1 class="app-name has-gradient-text">Users</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="board-bar">
+      <div class="control">
+        <input class="input is-primary" type="text" placeholder="Search With Name" [(ngModel)]="name"
+          (keyup.enter)="searchWithName(name)">
+        <button class="button  is-primary" (click)="searchWithName(name)"
+          [ngClass]="{'is-loading': isSearching}">Search</button>
+      </div>
+    </div>
+
+    <div class="board-wrapper">
+      <div class="board-columns" cdkDropListGroup>
+        <div class="board-column" *ngFor="let column of usersData; let i = index">
+          <div class="tasks-container" cdkDropList [cdkDropListData]="column" (cdkDropListDropped)="drop($event)">
+            <div class="task" *ngFor="let item of column" cdkDrag>
+              <ul class="menu-list">
+                <li><a> <strong>Name: </strong> {{item?.name}}</a></li>
+                <li><a> <strong>Url: </strong> {{item?.url}}</a></li>
+                <li><a> <strong>Height: </strong> {{item?.height}}</a></li>
+                <li><a> <strong>Homeworld: </strong> {{item?.homeworld}}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
